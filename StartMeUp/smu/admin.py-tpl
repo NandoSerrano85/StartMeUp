@@ -1,3 +1,9 @@
 from django.contrib import admin
+from django_google_maps import widget as map_widgets
+from django_google_mpas import fields as map_fields
 
+class MapAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        map_fields.AddressField: {'widget': map_widgets.GoogleMapsAddressWidget},
+    }
 # Register your models here.
